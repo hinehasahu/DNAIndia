@@ -1,42 +1,52 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+
 import './App.css';
+import LatestNews from "./components/LatestNews"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from './components/Navbar';
 import Menu from './components/Menu';
 import Newsfeed from './components/Newsfeed';
-import apikey from './data/config';
-// import NewsCard from './components/NewsCard';
+import Ipl from './components/Ipl';
+import LifeStyle from './components/LifeStyle';
+import World from './components/World';
+import Technology from './components/Technology';
+import Photos from './components/Photos';
+import Cricket from './components/Cricket';
+import Entertainment from './components/Entertainment';
+import Business from './components/Business';
+import India from './components/India';
+import Explainers from './components/Explainers';
+import Videos from './components/Videos';
+import Education from './components/Education';
+import Health from './components/Health';
+
 
 function App() {
-  const [newsArray, setnewsArray] = useState([]);
-  const [newsResults, setnewsResults] = useState();
-  const newsApi = async () =>{
-
-    try{
-     
-      const news = await axios.get(
-        `https://newsapi.org/v2/top-headlines?country=in&category=general&apiKey=${apikey}`
-      )
-      console.log(news);
-      // setnewsArray(news.data.articles);
-      // setnewsResults(news.data.totalResults);
-    }
-    catch(error){
-      console.log(error);
-    }
-
-  }
-
-  useEffect(() =>{
-     newsApi();
-  },[newsResults])
-
+  
   return (
     <div className="App">
-      <Navbar/>
-      <Menu/>
-      < Newsfeed newsArray={newsArray} newsResults={newsResults} />
+       <BrowserRouter>
+       <Navbar/>
+       <Menu/>
+       {/* < Newsfeed /> */}
+       <Routes>
+       <Route path="/" element={<Newsfeed/>}/>
+        <Route path="/latestnews" element={<LatestNews/>}/>
+        <Route path="/ipl" element={<Ipl/>}/>
+        <Route path="/video" element={<Videos/>}/>
+        <Route path="/explainers" element={<Explainers/>}/>
+        <Route path="/india" element={<India/>}/>
+        <Route path="/business" element={<Business/>}/>
+        <Route path="/entertainment" element={<Entertainment/>}/>
+        <Route path="/cricket" element={<Cricket/>}/>
+        <Route path="/photos" element={<Photos/>}/>
+        <Route path="/technology" element={<Technology/>}/>
+        <Route path="/world" element={<World/>}/>
+        <Route path="/lifestyle" element={<LifeStyle/>}/>
+        <Route path="/education" element={<Education/>}/>
+        <Route path="/health" element={<Health/>}/>
+      </Routes>
       {/* <NewsCard/> */}
+      </BrowserRouter>
     </div>
   );
 }
