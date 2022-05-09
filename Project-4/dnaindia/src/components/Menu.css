@@ -1,0 +1,26 @@
+.menu {
+    /* border: 1px solid red; */
+    width: 25%;
+    top: 15%;
+    position: fixed;
+}
+
+.menu-box {
+    display: flex;
+    width: 90%;
+    /* border: 1px solid red; */
+    /* height: 25px; */
+    font-size: small;
+    margin-left: 6%;
+}
+.menu-box:hover {
+    background-color: rgb(255, 230, 0);
+    cursor: pointer;
+}
+
+.menu-box > img {
+    width: 8%;
+    height: 8%;
+    margin: 3% 3% 0 3%;
+    /* margin-top: 3%; */
+}
